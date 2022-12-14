@@ -40,6 +40,8 @@ def button_gauss():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
 
     frameGauss.grid(row=0,column=1,padx=15,pady=15)
@@ -57,6 +59,8 @@ def button_for_gen():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
     
     frameF_G.grid(row=0,column=1,padx=15,pady=15)
@@ -91,6 +95,8 @@ def button_n_r():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
     
     frameN_R.grid(row=0,column=1,padx=15,pady=15)
@@ -108,6 +114,8 @@ def button_ley_signos():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
     
     frameLey_Signos.grid(row=0,column=1,padx=15,pady=15)
@@ -124,6 +132,8 @@ def button_p_q():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
     
     frameP_Q.grid(row=0,column=1,padx=15,pady=15)
@@ -144,6 +154,8 @@ def button_division_sintetica():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
     
     frameDivision_Sintetica.grid(row=0,column=1,padx=15,pady=15)
@@ -163,6 +175,8 @@ def button_binomios():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
     
     frameBinomios.grid(row=0,column=1,padx=15,pady=15)
@@ -179,6 +193,8 @@ def button_derivada():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
 
     frameDerivada.grid(row=0,column=1,padx=15,pady=15)
@@ -195,6 +211,8 @@ def button_integral():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
 
     frameIntegral.grid(row=0,column=1,padx=15,pady=15)
@@ -226,6 +244,58 @@ def button_integral():
 
 
     
+def button_igualacion():
+    frameGauss.grid_remove()
+    frameF_G.grid_remove()
+    frameN_R.grid_remove()
+    frameLey_Signos.grid_remove()
+    frameP_Q.grid_remove()
+    frameDivision_Sintetica.grid_remove()
+    frameBinomios.grid_remove()
+    frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
+    frameAutor.grid_remove()
+
+    frameIgualar.grid(row=0,column=1,padx=15,pady=15)
+
+    l_instruc_igualar.grid(row=0,column=5)
+
+    l_igualacion_x0.grid(row=1,column=0)
+    l_igualacion_x1.grid(row=1,column=1)
+    l_igualacion_x2.grid(row=1,column=2)
+    l_igualacion_x3.grid(row=1,column=3)
+    l_igualacion_x4.grid(row=1,column=4)
+
+    l_igualacion_espacio.grid(row=1,column=5)
+
+    l_igualacionx0.grid(row=1,column=6)
+    l_igualacionx1.grid(row=1,column=7)
+    l_igualacionx2.grid(row=1,column=8)
+    l_igualacionx3.grid(row=1,column=9)
+    l_igualacionx4.grid(row=1,column=10)
+    
+    e_igualacion_x0.grid(row=2,column=0)
+    e_igualacion_x1.grid(row=2,column=1)
+    e_igualacion_x2.grid(row=2,column=2)
+    e_igualacion_x3.grid(row=2,column=3)
+    e_igualacion_x4.grid(row=2,column=4)
+
+    e_igualacionx0.grid(row=2,column=6)
+    e_igualacionx1.grid(row=2,column=7)
+    e_igualacionx2.grid(row=2,column=8)
+    e_igualacionx3.grid(row=2,column=9)
+    e_igualacionx4.grid(row=2,column=10)
+
+    l_igualacion_resultado.grid(row=3,column=5)
+    l_igualacion_inst.grid(row=3,column=11)
+    b_aceptar_igualacion.grid(row=1,column=11)
+
+    e_igualacion_y0.grid(row=3,column=6)
+    e_igualacion_y1.grid(row=3,column=7)
+    e_igualacion_y2.grid(row=3,column=8)
+    e_igualacion_y3.grid(row=3,column=9)
+    e_igualacion_y4.grid(row=3,column=10)
 def button_autor():
     frameGauss.grid_remove()
     frameF_G.grid_remove()
@@ -235,6 +305,8 @@ def button_autor():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
 
     frameAutor.grid(row=0,column=1,padx=15,pady=15)
@@ -263,6 +335,7 @@ b_division_sintetica = Button(frameMenu, text="División Sintetica", command=but
 b_binomios = Button(frameMenu, text="Binomios de Newton", command=button_binomios,width=30)
 b_derivada = Button(frameMenu, text="Derivada", command=button_derivada,width=30)
 b_integral = Button(frameMenu, text="Integral", command=button_integral,width=30)
+b_ingualar = Button(frameMenu,text="Igualación",command=button_igualacion,width=30)
 b_autor = Button(frameMenu, text="Autor", command=button_autor,width=30)
 
 
@@ -279,7 +352,8 @@ b_division_sintetica.grid(row=5,column=0)
 b_binomios.grid(row=6,column=0)
 b_derivada.grid(row=7,column=0)
 b_integral.grid(row=8,column=0)
-b_autor.grid(row=9,column=0)
+b_ingualar.grid(row=9,column=0)
+b_autor.grid(row=10,column=0)
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #FUNCIONES DE LOS BOTONES EN GUASS
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -794,7 +868,118 @@ e_integral_lim_sup = Entry(frameIntegral,width=15)
 e_integral_area = Entry(frameIntegral,width=15)
 e_integral_area_total = Entry(frameIntegral,width=15)
 
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#FUNCIONES DE LOS BOTONES EN IGUALACION
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def button_igualacion_acep():
+    if (e_igualacion_x0.get() != ''):
+        x0 = int(e_igualacion_x0.get())
+    else:
+        x0 = 0
 
+    if (e_igualacion_x1.get() != ''):
+        x1 = int(e_igualacion_x1.get())
+    else:
+        x1 = 0
+    
+    if (e_igualacion_x2.get() != ''):
+        x2 = int(e_igualacion_x2.get())
+    else:
+        x2 = 0
+
+    if (e_igualacion_x3.get() != ''):
+        x3 = int(e_igualacion_x3.get())
+    else:
+        x3 = 0
+
+    if (e_igualacion_x4.get() != ''):
+        x4 = int(e_igualacion_x4.get())
+    else:
+        x4 = 0
+    
+    if (e_igualacionx0.get() != ''):
+        y0 = int(e_igualacionx0.get())
+    else:
+        y0 = 0
+    if (e_igualacionx1.get() != ''):
+        y1 = int(e_igualacionx1.get())
+    else:
+        y1 = 0
+    if (e_igualacionx2.get() != ''):
+        y2 = int(e_igualacionx2.get())
+    else:
+        y2 = 0
+    if (e_igualacionx3.get() != ''):
+        y3 = int(e_igualacionx3.get())
+    else:
+        y3 = 0
+    if (e_igualacionx4.get() != ''):
+        y4 = int(e_igualacionx4.get())
+    else:
+        y4 = 0
+
+    z0 = x0 + (y0*-1)
+    z1 = x1 + (y1*-1)
+    z2 = x2 + (y2*-1)
+    z3 = x3 + (y3*-1)
+    z4 = x4 + (y4*-1)
+
+    e_igualacion_y0.delete(0,END)
+    e_igualacion_y0.insert(0,str(z0))
+    e_igualacion_y1.delete(0,END)
+    e_igualacion_y1.insert(0,str(z1))
+    e_igualacion_y2.delete(0,END)
+    e_igualacion_y2.insert(0,str(z2))
+    e_igualacion_y3.delete(0,END)
+    e_igualacion_y3.insert(0,str(z3))
+    e_igualacion_y4.delete(0,END)
+    e_igualacion_y4.insert(0,str(z4))
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#CREACION FRAME IGUALACION
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+frameIgualar = LabelFrame(root,text="Igualación",padx=10,pady=10)
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#COSAS DEL FRAME IGUALACION
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+l_instruc_igualar = Label(frameIgualar,text="Escribe la igualdad")
+
+l_igualacion_x0 = Label(frameIgualar,text="x4")
+l_igualacion_x1 = Label(frameIgualar,text="x3")
+l_igualacion_x2 = Label(frameIgualar,text="x2")
+l_igualacion_x3 = Label(frameIgualar,text="x1")
+l_igualacion_x4 = Label(frameIgualar,text="x0")
+
+l_igualacion_espacio = Label(frameIgualar,text="=",width=10)
+
+l_igualacionx0 = Label(frameIgualar,text="x4")
+l_igualacionx1 = Label(frameIgualar,text="x3")
+l_igualacionx2 = Label(frameIgualar,text="x2")
+l_igualacionx3 = Label(frameIgualar,text="x1")
+l_igualacionx4 = Label(frameIgualar,text="x0")
+
+b_aceptar_igualacion = Button(frameIgualar,text="Aceptar",command=button_igualacion_acep)
+
+e_igualacion_x0 = Entry(frameIgualar,width=10)
+e_igualacion_x1 = Entry(frameIgualar,width=10)
+e_igualacion_x2 = Entry(frameIgualar,width=10)
+e_igualacion_x3 = Entry(frameIgualar,width=10)
+e_igualacion_x4 = Entry(frameIgualar,width=10)
+
+e_igualacionx0 = Entry(frameIgualar,width=10)
+e_igualacionx1 = Entry(frameIgualar,width=10)
+e_igualacionx2 = Entry(frameIgualar,width=10)
+e_igualacionx3 = Entry(frameIgualar,width=10)
+e_igualacionx4 = Entry(frameIgualar,width=10)
+
+l_igualacion_resultado = Label(frameIgualar,text="Resultado",pady=15)
+l_igualacion_inst = Label(frameIgualar,text="Copiar a Newton-Rapson o conveniente")
+
+e_igualacion_y0 = Entry(frameIgualar,width=10)
+e_igualacion_y1 = Entry(frameIgualar,width=10)
+e_igualacion_y2 = Entry(frameIgualar,width=10)
+e_igualacion_y3 = Entry(frameIgualar,width=10)
+e_igualacion_y4 = Entry(frameIgualar,width=10)
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #FUNCIONES DE LOS BOTONES EN AUTOR
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
