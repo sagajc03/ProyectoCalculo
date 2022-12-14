@@ -18,8 +18,8 @@ from derivada import derivada
 from integrales import integrales as inte
 
 
-# current_path = os.path.dirname(r'C:\Users\ThinkCentre M910s\OneDrive\Documentos\purebasCodigo\ProyectoCalculo\gui.py') #PC
-current_path = os.path.dirname(r'C:\Users\ThinkCentre M910s\OneDrive\Documentos\purebasCodigo\ProyectoCalculo\gui.py') #LAP
+current_path = os.path.dirname(r'C:\Users\sagaj\OneDrive\Documentos\purebasCodigo\ProyectoCalculo\guiLap.py') #PC
+# current_path = os.path.dirname(r'C:\Users\ThinkCentre M910s\OneDrive\Documentos\purebasCodigo\ProyectoCalculo\gui.py') #LAP
 img_path = os.path.join(current_path, 'img')
 
 
