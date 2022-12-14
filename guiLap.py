@@ -6,6 +6,7 @@ import tkinter
 from PIL import ImageTk,Image
 import numpy as np 
 import os
+from sympy import *
 
 from gauss import gaussjordan
 from segundoGrado import formula_Gen
@@ -14,10 +15,11 @@ from signosdescartes_copy import descartes
 from coeficientesEnteros import CoeficioentesEnteros
 from BinomioNewton import BinomioNewton
 from derivada import derivada
+from integrales import integrales as inte
 
 
-current_path = os.path.dirname(r'C:\Users\sagaj\OneDrive\Documentos\purebasCodigo\ProyectoCalculo\guiLap.py') #LAP
 # current_path = os.path.dirname(r'C:\Users\ThinkCentre M910s\OneDrive\Documentos\purebasCodigo\ProyectoCalculo\gui.py') #PC
+current_path = os.path.dirname(r'C:\Users\ThinkCentre M910s\OneDrive\Documentos\purebasCodigo\ProyectoCalculo\gui.py') #LAP
 img_path = os.path.join(current_path, 'img')
 
 
@@ -38,6 +40,8 @@ def button_gauss():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
 
     frameGauss.grid(row=0,column=1,padx=15,pady=15)
@@ -55,6 +59,8 @@ def button_for_gen():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
     
     frameF_G.grid(row=0,column=1,padx=15,pady=15)
@@ -89,6 +95,8 @@ def button_n_r():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
     
     frameN_R.grid(row=0,column=1,padx=15,pady=15)
@@ -106,6 +114,8 @@ def button_ley_signos():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
     
     frameLey_Signos.grid(row=0,column=1,padx=15,pady=15)
@@ -122,6 +132,8 @@ def button_p_q():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
     
     frameP_Q.grid(row=0,column=1,padx=15,pady=15)
@@ -142,6 +154,8 @@ def button_division_sintetica():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
     
     frameDivision_Sintetica.grid(row=0,column=1,padx=15,pady=15)
@@ -161,6 +175,8 @@ def button_binomios():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
     
     frameBinomios.grid(row=0,column=1,padx=15,pady=15)
@@ -177,6 +193,8 @@ def button_derivada():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
 
     frameDerivada.grid(row=0,column=1,padx=15,pady=15)
@@ -184,7 +202,100 @@ def button_derivada():
     e_derivada.grid(row=1,column=0)
     b_derivadas_aceptar.grid(row=2,column=0)
 
+def button_integral():
+    frameGauss.grid_remove()
+    frameF_G.grid_remove()
+    frameN_R.grid_remove()
+    frameLey_Signos.grid_remove()
+    frameP_Q.grid_remove()
+    frameDivision_Sintetica.grid_remove()
+    frameBinomios.grid_remove()
+    frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
+    frameAutor.grid_remove()
+
+    frameIntegral.grid(row=0,column=1,padx=15,pady=15)
+    l_integral_ins.grid(row=0,column=0)
+    l_integral_tot.grid(row=1,column=0)
+    b_integral_aniadir.grid(row=0,column=5)
+    b_integral_aceptar.grid(row=0,column=6)
+
+    l_integral_ecuacion.grid(row=0,column=1)
+    l_integral_lim_inf.grid(row=0,column=2)
+    l_integral_lim_sup.grid(row=0,column=3)
+    l_integral_area.grid(row=0,column=4)
+    l_integral_total.grid(row=0,column=7)
+
+
+    e_integral_ecuacion.grid(row=1,column=1)
+    e_integral_lim_inf.grid(row=1,column=2)    
+    e_integral_lim_sup.grid(row=1,column=3)
+    e_integral_area.grid(row=1,column=4)
+    e_integral_area_total.grid(row=1,column=7)
+
+    if len(inter_array_ex) == 0:
+        inter_array_in.append(e_integral_ecuacion)
+        inter_array_in.append(e_integral_lim_inf)
+        inter_array_in.append(e_integral_lim_sup)
+        inter_array_in.append(e_integral_area)
+        inter_array_ex.append(inter_array_in)
+
+
+
     
+def button_igualacion():
+    frameGauss.grid_remove()
+    frameF_G.grid_remove()
+    frameN_R.grid_remove()
+    frameLey_Signos.grid_remove()
+    frameP_Q.grid_remove()
+    frameDivision_Sintetica.grid_remove()
+    frameBinomios.grid_remove()
+    frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
+    frameAutor.grid_remove()
+
+    frameIgualar.grid(row=0,column=1,padx=15,pady=15)
+
+    l_instruc_igualar.grid(row=0,column=5)
+
+    l_igualacion_x0.grid(row=1,column=0)
+    l_igualacion_x1.grid(row=1,column=1)
+    l_igualacion_x2.grid(row=1,column=2)
+    l_igualacion_x3.grid(row=1,column=3)
+    l_igualacion_x4.grid(row=1,column=4)
+
+    l_igualacion_espacio.grid(row=1,column=5)
+
+    l_igualacionx0.grid(row=1,column=6)
+    l_igualacionx1.grid(row=1,column=7)
+    l_igualacionx2.grid(row=1,column=8)
+    l_igualacionx3.grid(row=1,column=9)
+    l_igualacionx4.grid(row=1,column=10)
+    
+    e_igualacion_x0.grid(row=2,column=0)
+    e_igualacion_x1.grid(row=2,column=1)
+    e_igualacion_x2.grid(row=2,column=2)
+    e_igualacion_x3.grid(row=2,column=3)
+    e_igualacion_x4.grid(row=2,column=4)
+
+    e_igualacionx0.grid(row=2,column=6)
+    e_igualacionx1.grid(row=2,column=7)
+    e_igualacionx2.grid(row=2,column=8)
+    e_igualacionx3.grid(row=2,column=9)
+    e_igualacionx4.grid(row=2,column=10)
+
+    l_igualacion_resultado.grid(row=3,column=5)
+    l_igualacion_inst.grid(row=3,column=11)
+    b_aceptar_igualacion.grid(row=1,column=11)
+
+    e_igualacion_y0.grid(row=3,column=6)
+    e_igualacion_y1.grid(row=3,column=7)
+    e_igualacion_y2.grid(row=3,column=8)
+    e_igualacion_y3.grid(row=3,column=9)
+    e_igualacion_y4.grid(row=3,column=10)
 def button_autor():
     frameGauss.grid_remove()
     frameF_G.grid_remove()
@@ -194,6 +305,8 @@ def button_autor():
     frameDivision_Sintetica.grid_remove()
     frameBinomios.grid_remove()
     frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
     frameAutor.grid_remove()
 
     frameAutor.grid(row=0,column=1,padx=15,pady=15)
@@ -221,6 +334,8 @@ b_p_q = Button(frameMenu, text="Posibles raices", command=button_p_q,width=30)
 b_division_sintetica = Button(frameMenu, text="División Sintetica", command=button_division_sintetica,width=30)
 b_binomios = Button(frameMenu, text="Binomios de Newton", command=button_binomios,width=30)
 b_derivada = Button(frameMenu, text="Derivada", command=button_derivada,width=30)
+b_integral = Button(frameMenu, text="Integral", command=button_integral,width=30)
+b_ingualar = Button(frameMenu,text="Igualación",command=button_igualacion,width=30)
 b_autor = Button(frameMenu, text="Autor", command=button_autor,width=30)
 
 
@@ -236,7 +351,9 @@ b_p_q.grid(row=4,column=0)
 b_division_sintetica.grid(row=5,column=0)
 b_binomios.grid(row=6,column=0)
 b_derivada.grid(row=7,column=0)
-b_autor.grid(row=8,column=0)
+b_integral.grid(row=8,column=0)
+b_ingualar.grid(row=9,column=0)
+b_autor.grid(row=10,column=0)
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #FUNCIONES DE LOS BOTONES EN GUASS
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -628,8 +745,6 @@ def b_aceptar2_derivada():
     for i in range(0,n):
         a[0,i] = int(derivadaEntry[i].get())
         a[1,i] = int(derivadaEntry[i+n].get())
-    dfx = 0
-    dfx = derivada.scardfxalt(a,n,float(e_derivada_x.get()))
     aux = 0
     lin = 0
     for i in range(0,n*2):
@@ -646,7 +761,7 @@ def b_aceptar2_derivada():
         derivadaOut[i].insert(0,(adfx[0,i]))
         derivadaOut[i+n].delete(0, END)
         derivadaOut[i+n].insert(0,(adfx[1,i]))
-    
+    dfx = derivada.scardfxalt(a,n,float(e_derivada_x.get()))
     e_derivada_4.grid(row=5,column=5)
     e_derivada_4.delete(0,END)
     e_derivada_4.insert(0,dfx)
@@ -654,9 +769,8 @@ def b_aceptar2_derivada():
 
 def b_limpiar_derivadas():
     for i in range(0,len(derivadaEntry)):
-        derivadaEntry[i].destroy()
-    for i in ran(0,len(derivadaOut)):
         derivadaOut[i].destroy()
+        derivadaEntry[i].destroy()
     b_derivadas_aceptar2.grid_forget()
     b_derivadas_limpiar.grid_forget()
     l_derivada_p.grid_forget()
@@ -681,6 +795,191 @@ l_derivada_a = Label(frameDerivada,text="Multplica a X")
 b_derivadas_aceptar2 = Button(frameDerivada,text="Aceptar",command=b_aceptar2_derivada)
 b_derivadas_limpiar = Button(frameDerivada,text="Reinicio",command=b_limpiar_derivadas)
 l_derivadas_l = Label(frameDerivada,text="|")
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#FUNCIONES DE LOS BOTONES EN INTEGRAL
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def b_aceptar_integrales():
+    for i in range(len(inter_array_ex)):
+        ecuacion = inter_array_ex[i][0].get()
+        a = inter_array_ex[i][1].get()
+        b = inter_array_ex[i][2].get()
+        area = inte.integrales.integral(ecuacion,a,b)
+        areas_inte.append(area)
+        inter_array_ex[i][3].delete(0,END)
+        inter_array_ex[i][3].insert(0,str(area))
+        if i == 0:
+            cuenta = area
+            e_integral_area_total.delete(0,END)
+            e_integral_area_total.insert(0,str(area))
+        else:
+            cuenta = cuenta - area
+            e_integral_area_total.delete(0,END)
+            e_integral_area_total.insert(0,str(cuenta))
+
+
+
+def b_aniadir_integral():
+    inter_array_in = []
+    e_integral_ecuacion = Entry(frameIntegral,width=15)
+    e_integral_lim_inf = Entry(frameIntegral,width=15)
+    e_integral_lim_sup = Entry(frameIntegral,width=15)
+    e_integral_area = Entry(frameIntegral,width=15)
+    inter_array_in.append(e_integral_ecuacion)
+    inter_array_in.append(e_integral_lim_inf)
+    inter_array_in.append(e_integral_lim_sup)
+    inter_array_in.append(e_integral_area)
+    inter_array_ex.append(inter_array_in)
+    tam = len(inter_array_ex)
+    for i in range(0,4):
+        inter_array_ex[tam-1][i].grid(row=tam,column=i+1)
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#CREACION FRAME INTEGRAL
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+frameIntegral = LabelFrame(root,text="Integrales",padx=10,pady=10)
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#COSAS DEL FRAME INTEGRAL
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cadena_integrales = """
+Instrucciones:
+Escribir la ecuación de la recta, el limite inferior 
+y el limite superior en los cuadros siguientes:
+"""
+
+cadena_integrales2 = """
+Total es el primero menos los siguientes
+"""
+l_integral_ins = Label(frameIntegral,text=cadena_integrales)
+l_integral_tot = Label(frameIntegral,text=cadena_integrales2)
+global inter_array_ex,inter_array_in, areas_inte
+inter_array_ex, inter_array_in, areas_inte = [],[],[]
+b_integral_aceptar = Button(frameIntegral,text="Aceptar",command=b_aceptar_integrales)
+b_integral_aniadir = Button(frameIntegral,text="Añadir",command=b_aniadir_integral)
+
+l_integral_ecuacion = Label(frameIntegral,text="Ecuación")
+l_integral_lim_inf = Label(frameIntegral,text="Limite inferior")
+l_integral_lim_sup = Label(frameIntegral,text="Limite superior")
+l_integral_area = Label(frameIntegral,text="Area")
+l_integral_total = Label(frameIntegral,text="TOTAL")
+
+e_integral_ecuacion = Entry(frameIntegral,width=15)
+e_integral_lim_inf = Entry(frameIntegral,width=15)
+e_integral_lim_sup = Entry(frameIntegral,width=15)
+e_integral_area = Entry(frameIntegral,width=15)
+e_integral_area_total = Entry(frameIntegral,width=15)
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#FUNCIONES DE LOS BOTONES EN IGUALACION
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def button_igualacion_acep():
+    if (e_igualacion_x0.get() != ''):
+        x0 = int(e_igualacion_x0.get())
+    else:
+        x0 = 0
+
+    if (e_igualacion_x1.get() != ''):
+        x1 = int(e_igualacion_x1.get())
+    else:
+        x1 = 0
+    
+    if (e_igualacion_x2.get() != ''):
+        x2 = int(e_igualacion_x2.get())
+    else:
+        x2 = 0
+
+    if (e_igualacion_x3.get() != ''):
+        x3 = int(e_igualacion_x3.get())
+    else:
+        x3 = 0
+
+    if (e_igualacion_x4.get() != ''):
+        x4 = int(e_igualacion_x4.get())
+    else:
+        x4 = 0
+    
+    if (e_igualacionx0.get() != ''):
+        y0 = int(e_igualacionx0.get())
+    else:
+        y0 = 0
+    if (e_igualacionx1.get() != ''):
+        y1 = int(e_igualacionx1.get())
+    else:
+        y1 = 0
+    if (e_igualacionx2.get() != ''):
+        y2 = int(e_igualacionx2.get())
+    else:
+        y2 = 0
+    if (e_igualacionx3.get() != ''):
+        y3 = int(e_igualacionx3.get())
+    else:
+        y3 = 0
+    if (e_igualacionx4.get() != ''):
+        y4 = int(e_igualacionx4.get())
+    else:
+        y4 = 0
+
+    z0 = x0 + (y0*-1)
+    z1 = x1 + (y1*-1)
+    z2 = x2 + (y2*-1)
+    z3 = x3 + (y3*-1)
+    z4 = x4 + (y4*-1)
+
+    e_igualacion_y0.delete(0,END)
+    e_igualacion_y0.insert(0,str(z0))
+    e_igualacion_y1.delete(0,END)
+    e_igualacion_y1.insert(0,str(z1))
+    e_igualacion_y2.delete(0,END)
+    e_igualacion_y2.insert(0,str(z2))
+    e_igualacion_y3.delete(0,END)
+    e_igualacion_y3.insert(0,str(z3))
+    e_igualacion_y4.delete(0,END)
+    e_igualacion_y4.insert(0,str(z4))
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#CREACION FRAME IGUALACION
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+frameIgualar = LabelFrame(root,text="Igualación",padx=10,pady=10)
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#COSAS DEL FRAME IGUALACION
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+l_instruc_igualar = Label(frameIgualar,text="Escribe la igualdad")
+
+l_igualacion_x0 = Label(frameIgualar,text="x4")
+l_igualacion_x1 = Label(frameIgualar,text="x3")
+l_igualacion_x2 = Label(frameIgualar,text="x2")
+l_igualacion_x3 = Label(frameIgualar,text="x1")
+l_igualacion_x4 = Label(frameIgualar,text="x0")
+
+l_igualacion_espacio = Label(frameIgualar,text="=",width=10)
+
+l_igualacionx0 = Label(frameIgualar,text="x4")
+l_igualacionx1 = Label(frameIgualar,text="x3")
+l_igualacionx2 = Label(frameIgualar,text="x2")
+l_igualacionx3 = Label(frameIgualar,text="x1")
+l_igualacionx4 = Label(frameIgualar,text="x0")
+
+b_aceptar_igualacion = Button(frameIgualar,text="Aceptar",command=button_igualacion_acep)
+
+e_igualacion_x0 = Entry(frameIgualar,width=10)
+e_igualacion_x1 = Entry(frameIgualar,width=10)
+e_igualacion_x2 = Entry(frameIgualar,width=10)
+e_igualacion_x3 = Entry(frameIgualar,width=10)
+e_igualacion_x4 = Entry(frameIgualar,width=10)
+
+e_igualacionx0 = Entry(frameIgualar,width=10)
+e_igualacionx1 = Entry(frameIgualar,width=10)
+e_igualacionx2 = Entry(frameIgualar,width=10)
+e_igualacionx3 = Entry(frameIgualar,width=10)
+e_igualacionx4 = Entry(frameIgualar,width=10)
+
+l_igualacion_resultado = Label(frameIgualar,text="Resultado",pady=15)
+l_igualacion_inst = Label(frameIgualar,text="Copiar a Newton-Rapson o conveniente")
+
+e_igualacion_y0 = Entry(frameIgualar,width=10)
+e_igualacion_y1 = Entry(frameIgualar,width=10)
+e_igualacion_y2 = Entry(frameIgualar,width=10)
+e_igualacion_y3 = Entry(frameIgualar,width=10)
+e_igualacion_y4 = Entry(frameIgualar,width=10)
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #FUNCIONES DE LOS BOTONES EN AUTOR
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
