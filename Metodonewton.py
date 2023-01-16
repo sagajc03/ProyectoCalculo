@@ -77,7 +77,7 @@ class newthon_r:
         if n > 4:
             x5 = Decimal(x[5])
         if n > 5:
-            x6 = x[6]
+            x6 = Decimal(x[6])
         if n > 6:
             x7 = x[7]
         if n > 7:

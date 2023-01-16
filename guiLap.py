@@ -1284,12 +1284,15 @@ def b_c_finan():
     for i in range(0,len(be1)):
         s = [float(s) for s in re.findall(r'-?\d+\.?\d*',be1[i])]
         ae1.append(s)
+
     for i in range(0,len(be1)):
         val1.append(float(ae1[i][0]))
         if len(ae1[i]) > 1:
             grados1.append(int(ae1[i][1]))
             if int(ae1[i][1]) > max1:
                 max1 = int(ae1[i][1])
+        elif 'x' in be1[i]:
+            grados1.append(1)
         else:
             grados1.append(0)
 
@@ -1299,12 +1302,15 @@ def b_c_finan():
     for i in range(0,len(be2)):
         s = [float(s) for s in re.findall(r'-?\d+\.?\d*',be2[i])]
         ae2.append(s)
+
     for i in range(0,len(be2)):
         val2.append(float(ae2[i][0]))
         if len(ae2[i]) > 1:
             grados2.append(int(ae2[i][1]))
             if int(ae2[i][1]) > max2:
                 max2 = int(ae2[i][1])
+        elif 'x' in be2[i]:
+            grados2.append(1)
         else:
             grados2.append(0)
     
@@ -1348,10 +1354,51 @@ def b_c_finan():
     e_finan_m.delete(0,END)
     e_finan_m.insert(0,monto)
     eq = e1 + "-(" + e2 + ")"
-
     eq2 = inte.integrales.integral2(eq)
+    eqs = str(eq2)
+
+    gradosq = []
+    valq = []
+    beq = util.separarTerminos(eqs)
+    aeq = []
+    maxq = 0
+    for i in range(0,len(beq)):
+        s = [float(s) for s in re.findall(r'-?\d+\.?\d*',beq[i])]
+        aeq.append(s)
+
+    for i in range(0,len(beq)):
+        valq.append(float(aeq[i][0]))
+        if len(aeq[i]) > 1:
+            gradosq.append(int(aeq[i][1]))
+            if int(aeq[i][1]) > maxq:
+                maxq = int(aeq[i][1])
+        elif 'x' in beq[i]:
+            gradosq.append(1)
+        else:
+            gradosq.append(0)
+
+    uaxq = 0
+    valqt = []
+    for i in range(maxq + 1):
+        if i in gradosq:
+            uaxq = gradosq.index(i)
+            valqt.append(valq[uaxq])
+        else:
+            valqt.append(0)
+        
+    x = 1
+    xe = Decimal(0.0)
+    fx = Decimal(0.0)
+    maxnr = Decimal(0.0)
+    x0,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12 = newthon_r.definir2(valqt,maxq)
+    for i in range(-100,100):
+        xe,fx = newthon_r.nwtonrap(x+i*x,x12,x11,x10,x9,x8,x7,x6,x5,x4,x3,x2,x1,x0)
+        if xe > maxnr:
+            maxnr = xe
+    punto_re = maxnr
+    
     e_finan_p.delete(0,END)
-    e_finan_p.insert(0,eq2)
+    e_finan_p.insert(0,punto_re)
     
     
     
