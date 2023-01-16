@@ -1,5 +1,7 @@
-import numpy as np 
-class gaussjordan:    
+import numpy as np
+# import sys
+
+class gaussjordan:
     def gauss(n,m,a):
         for i in range(0,n):
             pivote = a[i,i]
@@ -16,7 +18,7 @@ class gaussjordan:
             continue
         return a
 
-        
+
 
     def tomardatos(n):
         m = n+1
@@ -28,8 +30,14 @@ class gaussjordan:
 
         return a
 
-# n = int(input("Tamaño"))
-# a = tomardatos(n)
-# print(a)
-# a = gauss(n,n+1,a)
-# print(a)
+
+# def main():
+#     n = int(input("Tamaño"))
+#     a = gaussjordan.tomardatos(n)
+#     print(a)
+#     a = gaussjordan.gauss(n,n+1,a)
+#     print(a)
+
+
+# if __name__ == '__main__':
+#     sys.exit(main())

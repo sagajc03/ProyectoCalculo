@@ -6,6 +6,10 @@ class integrales:
         x = symbols("x")
         return integrate(f,(x,a,b)).evalf()
 
+
+    def integral2(f):
+        x = symbols("x")
+        return integrate(f)
 # f = input("Ecuacion> ")
 # a = float(input("Limite inferior> "))
 # b = float(input("Limite superior> "))

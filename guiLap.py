@@ -6,7 +6,9 @@ import tkinter
 from PIL import ImageTk,Image
 import numpy as np 
 import os
+import matplotlib.pyplot as plt
 from sympy import *
+import re
 
 from gauss import gaussjordan
 from segundoGrado import formula_Gen
@@ -16,10 +18,12 @@ from coeficientesEnteros import CoeficioentesEnteros
 from BinomioNewton import BinomioNewton
 from derivada import derivada
 from integrales import integrales as inte
+from minicuadra import minicuadra
+from utilidades import utilidades as util
 
 
-current_path = os.path.dirname(r'C:\Users\sagaj\OneDrive\Documentos\purebasCodigo\ProyectoCalculo\guiLap.py') #PC
-# current_path = os.path.dirname(r'C:\Users\ThinkCentre M910s\OneDrive\Documentos\purebasCodigo\ProyectoCalculo\gui.py') #LAP
+# current_path = os.path.dirname(r'C:\Users\sagaj\OneDrive\Documentos\purebasCodigo\ProyectoCalculo\guiLap.py') #PC
+current_path = os.path.dirname(r'C:\Users\ThinkCentre M910s\OneDrive\Documentos\purebasCodigo\ProyectoCalculo\gui.py') #PC
 img_path = os.path.join(current_path, 'img')
 
 
@@ -42,6 +46,9 @@ def button_gauss():
     frameDerivada.grid_remove()
     frameIntegral.grid_remove()
     frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
     frameAutor.grid_remove()
 
     frameGauss.grid(row=0,column=1,padx=15,pady=15)
@@ -61,6 +68,9 @@ def button_for_gen():
     frameDerivada.grid_remove()
     frameIntegral.grid_remove()
     frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
     frameAutor.grid_remove()
     
     frameF_G.grid(row=0,column=1,padx=15,pady=15)
@@ -97,6 +107,9 @@ def button_n_r():
     frameDerivada.grid_remove()
     frameIntegral.grid_remove()
     frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
     frameAutor.grid_remove()
     
     frameN_R.grid(row=0,column=1,padx=15,pady=15)
@@ -106,7 +119,7 @@ def button_n_r():
     b_n_r_aceptar.grid(row=2,column=0)
 
 def button_ley_signos():
-    frameGauss.grid_remove()    
+    frameGauss.grid_remove()
     frameF_G.grid_remove()
     frameN_R.grid_remove()
     frameLey_Signos.grid_remove()
@@ -116,6 +129,9 @@ def button_ley_signos():
     frameDerivada.grid_remove()
     frameIntegral.grid_remove()
     frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
     frameAutor.grid_remove()
     
     frameLey_Signos.grid(row=0,column=1,padx=15,pady=15)
@@ -134,6 +150,9 @@ def button_p_q():
     frameDerivada.grid_remove()
     frameIntegral.grid_remove()
     frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
     frameAutor.grid_remove()
     
     frameP_Q.grid(row=0,column=1,padx=15,pady=15)
@@ -156,6 +175,9 @@ def button_division_sintetica():
     frameDerivada.grid_remove()
     frameIntegral.grid_remove()
     frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
     frameAutor.grid_remove()
     
     frameDivision_Sintetica.grid(row=0,column=1,padx=15,pady=15)
@@ -177,6 +199,9 @@ def button_binomios():
     frameDerivada.grid_remove()
     frameIntegral.grid_remove()
     frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
     frameAutor.grid_remove()
     
     frameBinomios.grid(row=0,column=1,padx=15,pady=15)
@@ -195,6 +220,9 @@ def button_derivada():
     frameDerivada.grid_remove()
     frameIntegral.grid_remove()
     frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
     frameAutor.grid_remove()
 
     frameDerivada.grid(row=0,column=1,padx=15,pady=15)
@@ -213,6 +241,9 @@ def button_integral():
     frameDerivada.grid_remove()
     frameIntegral.grid_remove()
     frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
     frameAutor.grid_remove()
 
     frameIntegral.grid(row=0,column=1,padx=15,pady=15)
@@ -233,6 +264,12 @@ def button_integral():
     e_integral_lim_sup.grid(row=1,column=3)
     e_integral_area.grid(row=1,column=4)
     e_integral_area_total.grid(row=1,column=7)
+
+    #---Simple---
+    l_integral_simple.grid(row=15,column=0)
+    e_integral_simple.grid(row=15,column=1)
+    b_integral_simple.grid(row=15,column=2)
+    e_integral_simple_res.grid(row=15,column=3)
 
     if len(inter_array_ex) == 0:
         inter_array_in.append(e_integral_ecuacion)
@@ -255,7 +292,12 @@ def button_igualacion():
     frameDerivada.grid_remove()
     frameIntegral.grid_remove()
     frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
     frameAutor.grid_remove()
+    
+
 
     frameIgualar.grid(row=0,column=1,padx=15,pady=15)
 
@@ -296,6 +338,87 @@ def button_igualacion():
     e_igualacion_y2.grid(row=3,column=8)
     e_igualacion_y3.grid(row=3,column=9)
     e_igualacion_y4.grid(row=3,column=10)
+
+
+
+def button_lineal():
+    frameGauss.grid_remove()
+    frameF_G.grid_remove()
+    frameN_R.grid_remove()
+    frameLey_Signos.grid_remove()
+    frameP_Q.grid_remove()
+    frameDivision_Sintetica.grid_remove()
+    frameBinomios.grid_remove()
+    frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
+    frameAutor.grid_remove()
+    
+    frameLineal.grid(row=0,column=1,padx=15,pady=15)
+
+    l_lineal_a.grid(row=0,column=0)
+    e_lineal_n.grid(row=1,column=0)
+    b_lineal_aceptar.grid(row=2,column=0)
+    l_lineal_b.grid(row=5,column=0)
+    
+
+def button_polinomica():
+    frameGauss.grid_remove()
+    frameF_G.grid_remove()
+    frameN_R.grid_remove()
+    frameLey_Signos.grid_remove()
+    frameP_Q.grid_remove()
+    frameDivision_Sintetica.grid_remove()
+    frameBinomios.grid_remove()
+    frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
+    frameAutor.grid_remove()
+    
+    framePolinomica.grid(row=0,column=1,padx=15,pady=15)
+
+    l_polinomica_a.grid(row=0,column=0)
+    e_polinomica_n.grid(row=1,column=0)
+    b_polinomica_aceptar.grid(row=2,column=0)
+    l_polinomica_b.grid(row=5,column=0)
+
+
+def button_financiero():
+    frameGauss.grid_remove()
+    frameF_G.grid_remove()
+    frameN_R.grid_remove()
+    frameLey_Signos.grid_remove()
+    frameP_Q.grid_remove()
+    frameDivision_Sintetica.grid_remove()
+    frameBinomios.grid_remove()
+    frameDerivada.grid_remove()
+    frameIntegral.grid_remove()
+    frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
+    frameAutor.grid_remove()
+
+    frameFinan.grid(row=0,column=1,padx=15,pady=15)
+
+    l_finan1.grid(row=0,column=0)
+    e_finan1.grid(row=1,column=0)
+    l_finan2.grid(row=2,column=0)
+    e_finan2.grid(row=3,column=0)
+    b_finan_c.grid(row=4,column=0)
+    l_finan_e.grid(row=5,column=0)
+    l_finan_m.grid(row=6,column=0)
+    l_finan_p.grid(row=7,column=0)
+    e_finan_e.grid(row=5,column=1)
+    e_finan_m.grid(row=6,column=1)
+    e_finan_p.grid(row=7,column=1)
+
 def button_autor():
     frameGauss.grid_remove()
     frameF_G.grid_remove()
@@ -307,6 +430,9 @@ def button_autor():
     frameDerivada.grid_remove()
     frameIntegral.grid_remove()
     frameIgualar.grid_remove()
+    frameLineal.grid_remove()
+    framePolinomica.grid_remove()
+    frameFinan.grid_remove()
     frameAutor.grid_remove()
 
     frameAutor.grid(row=0,column=1,padx=15,pady=15)
@@ -336,7 +462,11 @@ b_binomios = Button(frameMenu, text="Binomios de Newton", command=button_binomio
 b_derivada = Button(frameMenu, text="Derivada", command=button_derivada,width=30)
 b_integral = Button(frameMenu, text="Integral", command=button_integral,width=30)
 b_ingualar = Button(frameMenu,text="Igualación",command=button_igualacion,width=30)
+b_lineal = Button(frameMenu,text="Formula Lineal",command=button_lineal,width=30)
+b_polinomica = Button(frameMenu,text="Formula Polinomica",command=button_polinomica,width=30)
+b_finan = Button(frameMenu,text="Financiero",command=button_financiero,width=30)
 b_autor = Button(frameMenu, text="Autor", command=button_autor,width=30)
+
 
 
 
@@ -353,7 +483,10 @@ b_binomios.grid(row=6,column=0)
 b_derivada.grid(row=7,column=0)
 b_integral.grid(row=8,column=0)
 b_ingualar.grid(row=9,column=0)
-b_autor.grid(row=10,column=0)
+b_lineal.grid(row=10,column=0)
+b_polinomica.grid(row=11,column=0)
+b_finan.grid(row=12,column=0)
+b_autor.grid(row=13,column=0)
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #FUNCIONES DE LOS BOTONES EN GUASS
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -833,6 +966,12 @@ def b_aniadir_integral():
     for i in range(0,4):
         inter_array_ex[tam-1][i].grid(row=tam,column=i+1)
 
+def b_int_sim():
+    e = e_integral_simple.get()
+    res = inte.integrales.integral2(e)
+    e_integral_simple_res.delete(0,END)
+    e_integral_simple_res.insert(0,res)
+
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #CREACION FRAME INTEGRAL
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -844,6 +983,7 @@ cadena_integrales = """
 Instrucciones:
 Escribir la ecuación de la recta, el limite inferior 
 y el limite superior en los cuadros siguientes:
+Usa el signo de multiplicacion '*'
 """
 
 cadena_integrales2 = """
@@ -855,6 +995,11 @@ global inter_array_ex,inter_array_in, areas_inte
 inter_array_ex, inter_array_in, areas_inte = [],[],[]
 b_integral_aceptar = Button(frameIntegral,text="Aceptar",command=b_aceptar_integrales)
 b_integral_aniadir = Button(frameIntegral,text="Añadir",command=b_aniadir_integral)
+
+l_integral_simple = Label(frameIntegral,text="Integracion indefinida")
+e_integral_simple = Entry(frameIntegral,width=20)
+b_integral_simple = Button(frameIntegral,text="Aceptar | Resultado =>",command=b_int_sim)
+e_integral_simple_res = Entry(frameIntegral,width=20)
 
 l_integral_ecuacion = Label(frameIntegral,text="Ecuación")
 l_integral_lim_inf = Label(frameIntegral,text="Limite inferior")
@@ -873,48 +1018,48 @@ e_integral_area_total = Entry(frameIntegral,width=15)
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def button_igualacion_acep():
     if (e_igualacion_x0.get() != ''):
-        x0 = int(e_igualacion_x0.get())
+        x0 = float(e_igualacion_x0.get())
     else:
         x0 = 0
 
     if (e_igualacion_x1.get() != ''):
-        x1 = int(e_igualacion_x1.get())
+        x1 = float(e_igualacion_x1.get())
     else:
         x1 = 0
     
     if (e_igualacion_x2.get() != ''):
-        x2 = int(e_igualacion_x2.get())
+        x2 = float(e_igualacion_x2.get())
     else:
         x2 = 0
 
     if (e_igualacion_x3.get() != ''):
-        x3 = int(e_igualacion_x3.get())
+        x3 = float(e_igualacion_x3.get())
     else:
         x3 = 0
 
     if (e_igualacion_x4.get() != ''):
-        x4 = int(e_igualacion_x4.get())
+        x4 = float(e_igualacion_x4.get())
     else:
         x4 = 0
     
     if (e_igualacionx0.get() != ''):
-        y0 = int(e_igualacionx0.get())
+        y0 = float(e_igualacionx0.get())
     else:
         y0 = 0
     if (e_igualacionx1.get() != ''):
-        y1 = int(e_igualacionx1.get())
+        y1 = float(e_igualacionx1.get())
     else:
         y1 = 0
     if (e_igualacionx2.get() != ''):
-        y2 = int(e_igualacionx2.get())
+        y2 = float(e_igualacionx2.get())
     else:
         y2 = 0
     if (e_igualacionx3.get() != ''):
-        y3 = int(e_igualacionx3.get())
+        y3 = float(e_igualacionx3.get())
     else:
         y3 = 0
     if (e_igualacionx4.get() != ''):
-        y4 = int(e_igualacionx4.get())
+        y4 = float(e_igualacionx4.get())
     else:
         y4 = 0
 
@@ -980,6 +1125,259 @@ e_igualacion_y1 = Entry(frameIgualar,width=10)
 e_igualacion_y2 = Entry(frameIgualar,width=10)
 e_igualacion_y3 = Entry(frameIgualar,width=10)
 e_igualacion_y4 = Entry(frameIgualar,width=10)
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#FUNCIONES DE LOS BOTONES EN LINEAL
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def b_aceptar_lineal():
+    n = int(e_lineal_n.get())
+    l_lineal_x.grid(row=0,column=1)
+    l_lineal_y.grid(row=0,column=2)
+    l_lineal_res.grid(row=0,column=3)
+    e_lineal_res.grid(row=1,column=3)
+    l_lineal_b.grid(row=n+2,column=0)
+    b_lineal_aceptar2.grid(row=n+2,column=2)
+    global linealEntry
+    linealEntry = []
+    
+    aux = 0
+    lin = 0
+    for i in range(0,n*2):
+        if aux < n:
+            aux += 1
+        else:
+            aux = 0
+            lin += 1
+        linealEntry.append(Entry(frameLineal,width=10))
+        linealEntry[i].grid(row=i%n+1,column=lin+1)
+
+    
+
+def b_aceptar_lineal2():
+    n = int(e_lineal_n.get())
+    x = []
+    y = []
+    for i in range(0,n):
+        x.append(float(linealEntry[i].get()))
+        y.append(float(linealEntry[i+n].get()))
+    a0, a1 = minicuadra.lineal(x,y)
+    plt.plot(x,y)
+    plt.show()
+    resp = str(a1)[:8]  + "*x + " + str(a0)[:8] 
+    e_lineal_res.delete(0,END)
+    e_lineal_res.insert(0,resp)
+    
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#CREACION FRAME LINEAL
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+frameLineal = LabelFrame(root,text="Formula Lineal",padx=10,pady=10)
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#COSAS DEL FRAME LINEAL
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cadenaLin = """
+Estima la formula de la recta
+escribiendo los puntos que se
+encuentran en el plano.
+"""
+l_lineal_a = Label(frameLineal,text="Escribe la cantidad de puntos")
+e_lineal_n = Entry(frameLineal,width=10)
+b_lineal_aceptar = Button(frameLineal,text="Aceptar",command=b_aceptar_lineal)
+
+l_lineal_b = Label(frameLineal,text=cadenaLin)
+
+#Siguiente columna
+
+l_lineal_x = Label(frameLineal,text="X")
+l_lineal_y = Label(frameLineal,text="Y")
+b_lineal_aceptar2 = Button(frameLineal,text="Aceptar",command=b_aceptar_lineal2)
+
+#sig
+l_lineal_res = Label(frameLineal,text="Respuesta")
+e_lineal_res = Entry(frameLineal,width=40)
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#FUNCIONES DE LOS BOTONES EN POLINOMICA
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def b_aceptar_polinomica():
+    n = int(e_polinomica_n.get())
+    l_polinomica_x.grid(row=0,column=1)
+    l_polinomica_y.grid(row=0,column=2)
+    l_polinomica_res.grid(row=0,column=3)
+    e_polinomica_res.grid(row=1,column=3)
+    l_polinomica_b.grid(row=n+2,column=0)
+    b_polinomica_aceptar2.grid(row=n+2,column=2)
+    global polinomicaEntry
+    polinomicaEntry = []
+    
+    aux = 0
+    lin = 0
+    for i in range(0,n*2):
+        if aux < n:
+            aux += 1
+        else:
+            aux = 0
+            lin += 1
+        polinomicaEntry.append(Entry(framePolinomica,width=10))
+        polinomicaEntry[i].grid(row=i%n+1,column=lin+1)
+
+def b_aceptar_polinomica2():
+    n = int(e_polinomica_n.get())
+    x = []
+    y = []
+    for i in range(0,n):
+        x.append(float(polinomicaEntry[i].get()))
+        y.append(float(polinomicaEntry[i+n].get()))
+    a0, a1, a2 = minicuadra.polinomica(x,y)
+    plt.plot(x,y)
+    plt.show()
+    resp = str(a2)[:8] + "*x^2 +" + str(a1)[:8] + "*x + " + str(a0)[:8]
+    e_polinomica_res.delete(0,END)
+    e_polinomica_res.insert(0,resp)
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#CREACION FRAME POLINOMICA
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+framePolinomica = LabelFrame(root,text="Formula Polinomica",padx=10,pady=10)
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#COSAS DEL FRAME POLINOMICA
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cadenaLin = """
+Estima la formula de la recta
+escribiendo los puntos que se
+encuentran en el plano.
+"""
+l_polinomica_a = Label(framePolinomica,text="Escribe la cantidad de puntos")
+e_polinomica_n = Entry(framePolinomica,width=10)
+b_polinomica_aceptar = Button(framePolinomica,text="Aceptar",command=b_aceptar_polinomica)
+
+l_polinomica_b = Label(framePolinomica,text=cadenaLin)
+
+#Siguiente columna
+
+l_polinomica_x = Label(framePolinomica,text="X")
+l_polinomica_y = Label(framePolinomica,text="Y")
+b_polinomica_aceptar2 = Button(framePolinomica,text="Aceptar",command=b_aceptar_polinomica2)
+
+#sig
+l_polinomica_res = Label(framePolinomica,text="Respuesta")
+e_polinomica_res = Entry(framePolinomica,width=40)
+
+
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#FUNCIONES DE LOS BOTONES EN FINAN
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def b_c_finan():
+    e1 = e_finan1.get()
+    e2 = e_finan2.get()
+    punto_eq = 0
+    monto = 0
+    punto_re = 0
+    grados1 = []
+    val1 = []
+    max1 = 0
+    grados2 = []
+    val2 = []
+    max2 = 0
+    maxt = 0
+
+    be1 = util.separarTerminos(e1)
+    ae1 = []
+    for i in range(0,len(be1)):
+        s = [float(s) for s in re.findall(r'-?\d+\.?\d*',be1[i])]
+        ae1.append(s)
+    for i in range(0,len(be1)):
+        val1.append(float(ae1[i][0]))
+        if len(ae1[i]) > 1:
+            grados1.append(int(ae1[i][1]))
+            if int(ae1[i][1]) > max1:
+                max1 = int(ae1[i][1])
+        else:
+            grados1.append(0)
+
+
+    be2 = util.separarTerminos(e2)
+    ae2 = []
+    for i in range(0,len(be2)):
+        s = [float(s) for s in re.findall(r'-?\d+\.?\d*',be2[i])]
+        ae2.append(s)
+    for i in range(0,len(be2)):
+        val2.append(float(ae2[i][0]))
+        if len(ae2[i]) > 1:
+            grados2.append(int(ae2[i][1]))
+            if int(ae2[i][1]) > max2:
+                max2 = int(ae2[i][1])
+        else:
+            grados2.append(0)
+    
+
+    if max1 > max2:
+        maxt = max1
+    else:
+        maxt = max2
+
+    uax1 = 0
+    uax2 = 0
+    valt = []
+    for i in range(maxt+1):
+        if i in grados1:
+            uax1 = grados1.index(i)
+            valt.append(val1[uax1])
+        else:
+            valt.append(0)
+        if i in grados2:
+            uax2 = grados2.index(i)
+            valt[i] = valt[i] - val2[uax2]
+
+    
+    x = 1
+    xe = Decimal(0.0)
+    fx = Decimal(0.0)
+    maxnr = Decimal(0.0)
+    x0,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12 = newthon_r.definir2(valt,maxt)
+    for i in range(-100,100):
+        xe,fx = newthon_r.nwtonrap(x+i*x,x12,x11,x10,x9,x8,x7,x6,x5,x4,x3,x2,x1,x0)
+        if xe > maxnr:
+            maxnr = xe
+    punto_eq = maxnr
+    e_finan_e.delete(0,END)
+    e_finan_e.insert(0,punto_eq)
+    
+
+    p1 = inte.integrales.integral(e1,0,punto_eq)
+    p2 = inte.integrales.integral(e2,0,punto_eq)
+    monto = p1 - p2
+    e_finan_m.delete(0,END)
+    e_finan_m.insert(0,monto)
+    eq = e1 + "-(" + e2 + ")"
+
+    eq2 = inte.integrales.integral2(eq)
+    e_finan_p.delete(0,END)
+    e_finan_p.insert(0,eq2)
+    
+    
+    
+    
+    
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#CREACION FRAME FINAN
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+frameFinan = LabelFrame(root,text="Punto de equilibrio, Monto de retorno, Punto de retorno")
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#COSAS DEL FRAME FINAN
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+l_finan1 = Label(frameFinan,text="Ingresa la primera ecuación")
+e_finan1 = Entry(frameFinan,width=10)
+l_finan2 = Label(frameFinan,text="Ingresa la segunda ecuación")
+e_finan2 = Entry(frameFinan,width=10)
+b_finan_c = Button(frameFinan,text="Calcular",command=b_c_finan)
+
+l_finan_e =Label(frameFinan,text="Punto de equilibrio:")
+l_finan_m =Label(frameFinan,text="Monto de retorno:")
+l_finan_p =Label(frameFinan,text="Llevar a newton-Rapson para sarber el Punto de retorno:")
+e_finan_e =Entry(frameFinan,width=15)
+e_finan_m =Entry(frameFinan,width=15)
+e_finan_p =Entry(frameFinan,width=15)
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #FUNCIONES DE LOS BOTONES EN AUTOR
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------

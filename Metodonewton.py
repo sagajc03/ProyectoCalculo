@@ -25,14 +25,18 @@ class newthon_r:
             return x, fx
         except:
             print("division entre 0")
-            return 1, 0
+            return Decimal(1), Decimal(0)
+
+            
     def definir(x,n):
         x0,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12 = (Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0))
         if n > 12:
             print("Demasiado largo")
         x0 = x[n]
-        x1 = x[n-1]
-        x2 = x[n-2]
+        if n > 0:
+            x1 = x[n-1]
+        if n > 1:
+            x2 = x[n-2]
         if n > 2:
             x3 = x[n-3]
         if n > 3:
@@ -53,6 +57,39 @@ class newthon_r:
             x11 = x[n-11]
         if n > 11:
             x12 = x[n-12]
+    
+        return x0,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12
+
+
+    def definir2(x,n):
+        x0,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12 = (Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0),Decimal(0.0))
+        if n > 12:
+            print("Demasiado largo")
+        x0 = Decimal(x[0])
+        if n > 0:
+            x1 = Decimal(x[1])
+        if n > 1:
+            x2 = Decimal(x[2])
+        if n > 2:
+            x3 = Decimal(x[3])
+        if n > 3:
+            x4 = Decimal(x[4])
+        if n > 4:
+            x5 = Decimal(x[5])
+        if n > 5:
+            x6 = x[6]
+        if n > 6:
+            x7 = x[7]
+        if n > 7:
+            x8 = x[8]
+        if n > 8:
+            x9 = x[9]
+        if n > 9:
+            x10 = x[10]
+        if n > 10:
+            x11 = x[11]
+        if n > 11:
+            x12 = x[12]
     
         return x0,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12
     
